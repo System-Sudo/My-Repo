@@ -1,1 +1,1 @@
-my-repo
+https://github.com/kamalgirdher/jenkins-tutorials
