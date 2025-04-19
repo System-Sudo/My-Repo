@@ -6,6 +6,7 @@ pipeline {
     environment {
         GREETING = 'Hello, World!'
         BUILD_ENV = 'Development'
+        CRED = Credentials("Sample")
     }
 
     stages {
@@ -26,7 +27,12 @@ pipeline {
                 }
             }
         }
+        stage('Credentials Testing') {
+            steps {
+                sh 'echo Hello $(CRED_USR)'
+                sh 'echo Hello $(CRED_PSW)'
     }
+}
 
     post {
         always {
