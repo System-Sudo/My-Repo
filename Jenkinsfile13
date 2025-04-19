@@ -28,9 +28,11 @@ pipeline {
             }
         }
         stage('Credentials Testing') {
-            steps {
-                sh 'echo Hello $(CRED_USR)'
-                sh 'echo Hello $(CRED_PSW)'
+    steps {
+        withCredentials([usernamePassword(credentialsId: 'Sample', usernameVariable: 'CRED_USR', passwordVariable: 'CRED_PSW')]) {
+            sh 'echo Hello $CRED_USR'
+            sh 'echo Hello $CRED_PSW'
+        }
     }
 }
 }
