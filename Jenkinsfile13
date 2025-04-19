@@ -33,7 +33,7 @@ pipeline {
                 sh 'echo Hello $(CRED_PSW)'
     }
 }
-
+}
     post {
         always {
             echo 'Pipeline completed.'
