@@ -1,0 +1,34 @@
+pipeline {
+    agent any
+
+    environment {
+        GREETING = 'Hello, World!'
+        BUILD_ENV = 'Development'
+    }
+
+    stages {
+        stage('Print Environment Variables') {
+            steps {
+                sh 'echo $GREETING'
+                sh 'echo Build is running in $BUILD_ENV environment'
+            }
+        }
+        stage('Dynamic Behavior') {
+            steps {
+                script {
+                    if (env.BUILD_ENV == 'Development') {
+                        echo 'Performing Development-specific tasks...'
+                    } else {
+                        echo 'Performing Production-specific tasks...'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+    }
+}
