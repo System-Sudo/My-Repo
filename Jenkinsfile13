@@ -6,7 +6,7 @@ pipeline {
     environment {
         GREETING = 'Hello, World!'
         BUILD_ENV = 'Development'
-        CRED = Credentials("Sample")
+        CRED = credentials("Sample")
     }
 
     stages {
